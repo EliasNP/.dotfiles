@@ -155,8 +155,8 @@ bindsym $mod+F11 workspace $workspace11
 bindsym $mod+F12 workspace $workspace12 
 
 # add HDMI monitor when connected
-exec --no-startup-id xrandr --output HDMI-1 --right-of eDP1
-bindsym $mod+m exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP1
+exec --no-startup-id xrandr --output HDMI-1 --left-of eDP-1
+bindsym $mod+m exec --no-startup-id xrandr --output HDMI-1 --auto --left-of eDP-1
 
 # move focused container to workspace
 bindsym $mod+Shift+F1 move container to workspace $workspace1
