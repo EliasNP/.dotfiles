@@ -188,8 +188,8 @@ assign [class="Sublime"] $workspace5
 # File apps
 assign [class="Nemo"] $workspace4
 # apps
-assign [class="winbox"] $workspace6
-assign [class="wine"] $workspace6
+assign [class="wWinbox"] $workspace6
+assign [class="Wine"] $workspace6
 # Texting apps
 assign [class="TelegramDesktop"] $workspace9
 assign [class="Twinkle"] $workspace9
