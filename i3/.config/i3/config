@@ -38,7 +38,8 @@ exec --no-startup-id compton --config ~/.config/compton.conf
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+t exec gnome-terminal
+bindsym $mod+Return exec gnome-terminal
+bindsym $mod+t exec alacritty
 
 # start File Manager "Nemo"
 bindsym $mod+f exec nemo 
@@ -127,7 +128,7 @@ set $workspace11 "11: Extra"
 set $workspace12 "12: Extra-2"
 
 # use workspaces on different monitors
-workspace $workspace1 output eDP-1
+workspace $workspace1 output HDMI-1
 workspace $workspace2 output HDMI-1
 workspace $workspace3 output HDMI-1
 workspace $workspace4 output HDMI-1
@@ -135,10 +136,10 @@ workspace $workspace5 output HDMI-1
 workspace $workspace6 output HDMI-1
 workspace $workspace7 output HDMI-1
 workspace $workspace8 output HDMI-1
-workspace $workspace9 output eDP-1
+workspace $workspace9 output HDMI-1
 workspace $workspace10 output eDP-1
 workspace $workspace11 output HDMI-1
-workspace $workspace12 output eDP-1
+workspace $workspace12 output HDMI-1
 
 # switch to workspace
 bindsym $mod+F1 workspace $workspace1
@@ -156,7 +157,10 @@ bindsym $mod+F12 workspace $workspace12
 
 # add HDMI monitor when connected
 exec --no-startup-id xrandr --output HDMI-1 --left-of eDP-1
+#exec --no-startup-id xrandr --output DVI-I-2-1 --left-of eDP-1
+#exec --no-startup-id xrandr --output DVI-I-3-2 --mode 1280x800 --pos 0x0
 bindsym $mod+m exec --no-startup-id xrandr --output HDMI-1 --auto --left-of eDP-1
+#bindsym $mod+m exec --no-startup-id xrandr --output DVI-I-2-1 --auto --left-of eDP-1
 
 # move focused container to workspace
 bindsym $mod+Shift+F1 move container to workspace $workspace1
@@ -176,10 +180,14 @@ bindsym $mod+Shift+F12 move container to workspace $workspace12
 # Terminal Apps
 assign [class="Terminus"] $workspace2
 assign [class="gnome-terminal"] $workspace2
+assign [class="alacritty"] $workspace2
+
 # Mail apps
 assign [class="Thunderbird"] $workspace1
+
 # Web apps
 assign [class="Firefox"] $workspace3
+assign [class="brave-browser"] $workspace3
 assign [class="Google-chrome"] $workspace3
 # Coding apps
 assign [class="Atom"] $workspace5
@@ -269,10 +277,10 @@ smart_borders on
 #                               i3wm bar                                    #
 #============================================================================
 
-bindsym $mod+b bar mode toggle
+bindsym $mod+Shift+b bar mode toggle
 bar {
 	# Bar program
-        status_command i3blocks -c ~/.i3/i3blocks.conf
+        status_command i3blocks -c ~/.dotfiles/i3blocks/.i3/i3blocks.conf
         #status_command i3status
 
         # Position of the bar
@@ -318,10 +326,10 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+x exec ~/scripts/lock.sh
 # bindsym $mod+x exec ~/.i3/matrixlock/matrixlock.py
 
-bindsym $mod+Shift+f exec firefox
+bindsym $mod+b exec brave-browser
 bindsym $mod+Shift+x exec shutdown -h now
 bindsym $mod+Shift+v exec code
-bindsym $mod+Shift+b exec blueman-manager
+#bindsym $mod+Shift+b exec blueman-manager
 
 # Remove green border on the left
 for_window [class="^.*"] border pixel 0
@@ -344,11 +352,12 @@ exec_always compton
 exec kdeconnect-indicator
 exec thunderbird
 exec nemo
-exec firefox
+exec brave-browser
 exec $HOME/Descargas/Telegram/Telegram
 exec headset
 exec subl
-exec gnome-terminal
+#exec gnome-terminal
+exec alacritty
 exec winbox
 
 
